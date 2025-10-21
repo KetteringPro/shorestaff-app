@@ -1,0 +1,22 @@
+const { data: existing, error } = await supabase
+  .from("venues")
+  .select("id, name")
+  .eq("user_id", user.id)
+  .ilike("name", newVenue.name.trim());
+
+if (existing && existing.length > 0) {
+  alert(`A venue named "${newVenue.name}" already exists.`);
+  return;
+}
+
+try {
+  // Insert logic here, e.g.:
+  // const { data, error } = await supabase.from("venues").insert([...]);
+  // if (error) throw error;
+} catch (error) {
+  if (error?.code === "23505") {
+    alert("A venue with this name already exists under your account.");
+  } else {
+    alert(error.message);
+  }
+}

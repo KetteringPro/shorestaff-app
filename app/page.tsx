@@ -1,70 +1,133 @@
-// app/page.tsx
+'use client';
+import React from 'react';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default function ComingSoon() {
+  const [showModal, setShowModal] = React.useState(false);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white text-slate-800 px-4">
-      {/* Logo */}
-      <img
-        src="/logo-dark.png"
-        alt="ShoreStaff Logo"
-        className="h-20 mb-4"
-      />
+    <div className="min-h-screen bg-gradient-to-b from-white to-teal-600 p-4 sm:p-8">
+      <div className="max-w-7xl mx-auto text-center">
+        
+        <div className="mb-2 sm:mb-4 -mt-2 sm:-mt-1 flex justify-center">
+          <img
+            src="/images/logo-horizontal.png"
+            alt="ShoreStaff Logo"
+            className="h-36 sm:h-44 md:h-52 lg:h-60 w-auto object-contain"
+          />
+        </div>
+        {/* Coming Soon Banner */}
+          <div className="mb-4 sm:mb-6">
+            <div className="inline-block bg-gradient-to-r from-teal-600 to-teal-700 text-white px-8 py-3 rounded-full font-bold text-base sm:text-lg shadow-xl animate-pulse">
+              🚀 Coming Soon
+            </div>
+          </div>
 
-      {/* Tagline */}
-      <p className="text-coastal text-sm uppercase tracking-widest mb-2 font-medium">
-        Staffing the coast, one restaurant at a time
-      </p>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-slate-800 px-4 max-w-6xl mx-auto">
+          Revolutionizing the service industry — one shift at a time.
+        </h1>
 
-      {/* Headline */}
-      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6 max-w-xl leading-tight">
-        A smarter way to fill restaurant shifts — fast.
-      </h1>
+        <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 text-slate-800 px-4 max-w-4xl mx-auto">
+          ShoreStaff connects restaurants with experienced professionals ready to fill shifts when you need them most.
+        </p>
 
-      <p className="text-center max-w-md text-slate-600 mb-8">
-        We’re building a platform for restaurants to find qualified, insured workers — and for gig staff to pick up extra shifts without the hassle.
-      </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 px-4">
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 text-left">
+            <h2 className="text-lg sm:text-xl font-semibold text-teal-700 mb-2 sm:mb-3">For Restaurants</h2>
+            <p className="text-sm sm:text-base text-slate-700">
+              Tired of scrambling for coverage? We match you with trusted staff when and where you need them.
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 text-left">
+            <h2 className="text-lg sm:text-xl font-semibold text-teal-700 mb-2 sm:mb-3">For Restaurant Pros</h2>
+            <p className="text-sm sm:text-base text-slate-700">
+              Looking for extra cash or schedule flexibility? Pick up shifts on your own time.
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 text-left">
+            <h2 className="text-lg sm:text-xl font-semibold text-teal-700 mb-2 sm:mb-3">For Caterers & Event Venues</h2>
+            <p className="text-sm sm:text-base text-slate-700">
+              Need on-call support for events? ShoreStaff helps you fill the gaps fast.
+            </p>
+          </div>
+        </div>
 
-      {/* Form */}
-      <form
-        action="https://formspree.io/f/YOUR_FORM_ID"
-        method="POST"
-        className="w-full max-w-sm space-y-4"
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-          className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ocean"
-        />
-        <button
-          type="submit"
-          className="w-full bg-ocean text-white py-2 rounded-md hover:bg-teal transition"
-        >
-          Notify Me at Launch
-        </button>
-      </form>
+        <div className="max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
+          <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-slate-800">
+            No spam! Just a simple email when the app is ready.
+          </p>
+          
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const email = formData.get("email") as string;
 
-      {/* Optional message */}
-      <p className="text-xs text-slate-400 mt-6">
-        No spam. Just one email when we go live.
-      </p>
+              const { error } = await supabase
+                .from("early_signups")
+                .insert([{ email }]);
 
-      {/* Custom colors via Tailwind config or inline */}
-      <style jsx>{`
-        .text-coastal {
-          color: #0d9488;
-        }
-        .bg-ocean {
-          background-color: #0891b2;
-        }
-        .hover\\:bg-teal:hover {
-          background-color: #0d9488;
-        }
-        .focus\\:ring-ocean:focus {
-          --tw-ring-color: #0891b2;
-        }
-      `}</style>
-    </main>
+              if (error) {
+                console.error("Signup error:", error.message);
+                alert("Something went wrong. Please try again later.");
+              } else {
+                setShowModal(true);
+              }
+              
+              e.currentTarget.reset();
+            }}
+            className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-2 sm:px-5 sm:py-3 rounded-lg border-2 border-gray-300 text-slate-800 text-sm sm:text-base"
+            />
+            <button
+              type="submit"
+              className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 sm:px-8 sm:py-3 rounded-lg text-sm sm:text-base whitespace-nowrap"
+            >
+              Notify Me
+            </button>
+          </form>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-5xl mx-auto px-4 mb-8">
+          <img src="/images/barista.jpg" alt="Barista" className="rounded-lg shadow-lg w-full h-auto" />
+          <img src="/images/lobster-dock.jpg" alt="Lobster Dock" className="rounded-lg shadow-lg w-full h-auto" />
+        </div>
+
+        <footer className="mt-8 sm:mt-16 pt-6 sm:pt-8 text-sm text-white border-t border-white/30">
+          &copy; {new Date().getFullYear()} ShoreStaff. All rights reserved.
+        </footer>
+      </div>
+
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-lg p-6 sm:p-8 max-w-md w-full shadow-2xl">
+            <h3 className="text-xl sm:text-2xl font-bold text-teal-700 mb-3">Welcome aboard! 🌊</h3>
+            <p className="text-slate-700 mb-6">
+              We'll notify you when ShoreStaff launches. Get ready to find staff or pick up shifts!
+            </p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-lg"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
