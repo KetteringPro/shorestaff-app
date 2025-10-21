@@ -2,20 +2,25 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-<head>
-  <meta property="og:title" content="ShoreStaff" />
-  <meta property="og:description" content="Staffing the coast, one restaurant at a time." />
-  <meta property="og:image" content="https://shorestaff.app/images/og/shorestaff-preview.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://shorestaff.app" />
-  <meta property="fb:app_id" content="1234567890" /> {/* Optional - use real App ID if available */}
-</head>
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'ShoreStaff',
-  description: 'Revolutionizing how the service industry staffs up — faster, smarter, and on your terms.',
+  description: 'Staffing the coast, one restaurant at a time.',
+  openGraph: {
+    title: 'ShoreStaff',
+    description: 'Staffing the coast, one restaurant at a time.',
+    url: 'https://shorestaff.app',
+    type: 'website',
+    images: [
+      {
+        url: 'https://shorestaff.app/images/og/shorestaff-preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'ShoreStaff Open Graph Preview',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -25,12 +30,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta property="og:title" content="ShoreStaff" />
-        <meta property="og:description" content="Staffing the coast, one restaurant at a time." />
-        <meta property="og:image" content="https://shorestaff.app/images/og/shorestaff-preview.png" />
-        <meta property="og:type" content="website" />
-      </head>
       <body className={`${inter.className}`}>
         <div className="min-h-screen bg-gradient-to-b from-[#0d9488] to-white">
           {children}
