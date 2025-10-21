@@ -2,6 +2,15 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+<head>
+  <meta property="og:title" content="ShoreStaff" />
+  <meta property="og:description" content="Staffing the coast, one restaurant at a time." />
+  <meta property="og:image" content="https://shorestaff.app/images/og/shorestaff-preview.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shorestaff.app" />
+  <meta property="fb:app_id" content="1234567890" /> {/* Optional - use real App ID if available */}
+</head>
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
