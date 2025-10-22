@@ -11,32 +11,33 @@ export default function ComingSoon() {
   const [showModal, setShowModal] = React.useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-teal-600 p-4 sm:p-8">
+    <div className="min-h-screen bg-gradient-to-b from-white to-teal-600 p-2 sm:p-4">
       <div className="max-w-7xl mx-auto text-center">
-        
-        <div className="mb-2 sm:mb-4 -mt-2 sm:-mt-1 flex justify-center">
+
+        <div className="mb-3 sm:mb-4 flex justify-center pt-6 sm:pt-8">
           <img
             src="/images/logo-horizontal.png"
             alt="ShoreStaff Logo"
-            className="h-36 sm:h-44 md:h-52 lg:h-60 w-auto object-contain"
+            className="w-3/4 sm:w-2/3 md:w-3/5 lg:w-1/2 h-auto object-contain"
           />
         </div>
-        {/* Coming Soon Banner */}
-          <div className="mb-4 sm:mb-6">
-            <div className="inline-block bg-gradient-to-r from-teal-600 to-teal-700 text-white px-8 py-3 rounded-full font-bold text-base sm:text-lg shadow-xl animate-pulse">
-              🚀 Coming Soon
-            </div>
-          </div>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-slate-800 px-4 max-w-6xl mx-auto">
+        {/* Coming Soon Banner */}
+        <div className="mb-6 sm:mb-8">
+          <div className="inline-block bg-gradient-to-r from-teal-600 to-teal-700 text-white px-8 py-3 rounded-full font-bold text-base sm:text-lg shadow-xl animate-pulse">
+            🚀 Coming Soon
+          </div>
+        </div>
+
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-slate-800 px-4 max-w-6xl mx-auto">
           Revolutionizing the service industry — one shift at a time.
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 text-slate-800 px-4 max-w-4xl mx-auto">
-          ShoreStaff connects restaurants with experienced professionals ready to fill shifts when you need them most.
+        <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-slate-800 px-4 max-w-4xl mx-auto">
+          SwipeAShift connects restaurants with experienced professionals ready to fill shifts when you need them most.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8 px-4">
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 text-left">
             <h2 className="text-lg sm:text-xl font-semibold text-teal-700 mb-2 sm:mb-3">For Restaurants</h2>
             <p className="text-sm sm:text-base text-slate-700">
@@ -59,7 +60,7 @@ export default function ComingSoon() {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
+        <div className="max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
           <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-slate-800">
             No spam! Just a simple email when the app is ready.
           </p>
@@ -101,13 +102,13 @@ export default function ComingSoon() {
           </form>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-5xl mx-auto px-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-5xl mx-auto px-4 mb-6">
           <img src="/images/barista.jpg" alt="Barista" className="rounded-lg shadow-lg w-full h-auto" />
           <img src="/images/lobster-dock.jpg" alt="Lobster Dock" className="rounded-lg shadow-lg w-full h-auto" />
         </div>
 
-        <footer className="mt-8 sm:mt-16 pt-6 sm:pt-8 text-sm text-white border-t border-white/30">
-          &copy; {new Date().getFullYear()} ShoreStaff. All rights reserved.
+        <footer className="mt-6 sm:mt-12 pt-4 sm:pt-6 text-sm text-white border-t border-white/30">
+          &copy; {new Date().getFullYear()} SwipeAShift. All rights reserved.
         </footer>
       </div>
 
@@ -117,7 +118,7 @@ export default function ComingSoon() {
           <div className="bg-white rounded-lg p-6 sm:p-8 max-w-md w-full shadow-2xl">
             <h3 className="text-xl sm:text-2xl font-bold text-teal-700 mb-3">Welcome aboard! 🌊</h3>
             <p className="text-slate-700 mb-6">
-              We'll notify you when ShoreStaff launches. Get ready to find staff or pick up shifts!
+              We'll notify you when SwipeAShift launches. Get ready to find staff or pick up shifts!
             </p>
             <button
               onClick={() => setShowModal(false)}
