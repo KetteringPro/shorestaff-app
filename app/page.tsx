@@ -17,7 +17,7 @@ export default function ComingSoon() {
         <div className="mb-3 sm:mb-4 flex justify-center pt-6 sm:pt-8">
           <img
             src="/images/logo-horizontal.png"
-            alt="ShoreStaff Logo"
+            alt="SwipeAShift Logo"
             className="w-3/4 sm:w-2/3 md:w-3/5 lg:w-1/2 h-auto object-contain"
           />
         </div>
@@ -55,7 +55,7 @@ export default function ComingSoon() {
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 text-left">
             <h2 className="text-lg sm:text-xl font-semibold text-teal-700 mb-2 sm:mb-3">For Caterers & Event Venues</h2>
             <p className="text-sm sm:text-base text-slate-700">
-              Need on-call support for events? ShoreStaff helps you fill the gaps fast.
+              Need on-call support for events? SwipeAShift helps you fill the gaps fast.
             </p>
           </div>
         </div>
